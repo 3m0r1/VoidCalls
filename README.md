@@ -7,7 +7,7 @@ VoidCalls allows the user to make direct or indirect system calls with easy-to-u
 VoidCalls resolves System Call Service Numbers using the Exception Directory, meaning it doesn't need to read NTDLL's system call stubs (which might have been tampered with).  
 
 ## Features
-- Doesn't require NTDLL Stubs
+- Doesn't require NTDLL/Win32u Stubs
 - Win32u support
 - Macros that make the process easier
 
