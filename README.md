@@ -6,6 +6,11 @@ VoidCalls allows the user to make direct or indirect system calls with easy-to-u
 
 VoidCalls resolves System Call Service Numbers using the Exception Directory, meaning it doesn't need to read NTDLL's system call stubs (which might have been tampered with).  
 
+## Features
+- Doesn't require NTDLL Stubs
+- Win32u support
+- Macros that make the process easier
+
 ## Example
 ```c
     SysCtx* ctx = INIT_CTX_NTDLL();
@@ -36,3 +41,4 @@ VoidCalls resolves System Call Service Numbers using the Exception Directory, me
 
 ## TODO
 - Add x86 support
+- Interface generator
