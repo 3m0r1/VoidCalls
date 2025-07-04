@@ -29,6 +29,6 @@ int main(int argc, char* argv[])
 
     free_ctx(ctx);
     free_config(config);
-
+    
     return 0;
 }

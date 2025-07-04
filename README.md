@@ -7,8 +7,8 @@ VoidCalls allows the user to make direct or indirect system calls with easy-to-u
 VoidCalls resolves System Call Service Numbers using the Exception Directory, meaning it doesn't need to read NTDLL's system call stubs (which might have been tampered with).  
 
 ## Features
-- Doesn't require NTDLL/Win32u Stubs
-- Win32u support
+- Doesn't require NTDLL stubs
+- Win32u support (Hell's Gate)
 - Macros that make the process easier
 
 ## Example
@@ -39,6 +39,10 @@ VoidCalls resolves System Call Service Numbers using the Exception Directory, me
 
 ```
 
+## Notes
+You need ``win32u.dll`` to be loaded to use ``INIT_CTX_WIN32U`` and invoke system calls using it.
+
 ## TODO
 - Add x86 support
-- Interface generator
+- Make Win32u handler use Halo's Gate
+- Make interface generator
