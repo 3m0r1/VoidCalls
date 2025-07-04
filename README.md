@@ -8,12 +8,12 @@ VoidCalls resolves System Call Service Numbers using the Exception Directory, me
 
 ## Features
 - Doesn't require NTDLL stubs
-- Win32u support (Hell's Gate)
+- Win32u support (Halo's Gate)
 - Macros that make the process easier
 
 ## Example
 
-### Ntdll
+### NTDLL
 ```c
 SysCtx* ctx = INIT_CTX_NTDLL();
 SysConfig* config = GET_SYS_CONFIG(ctx, ZwAllocateVirtualMemory);
