@@ -28,8 +28,22 @@ PVOID get_syscall_addr(DWORD_PTR fn_addr) {
     return NULL;
 }
 
+DWORD find_ssn(DWORD_PTR stub_address) {
+    if (!memcmp((PVOID)stub_address, SYSCALL_START, sizeof(SYSCALL_START))) {
+
+        BYTE high = *(PBYTE)(stub_address + 0x5);
+        BYTE low = *(PBYTE)(stub_address + 0x4);
+
+        return (high << 8) | low;
+    }
+    else {
+        return 0;
+    }
+}
+
 SysConfig* get_sys_config(SysCtx* ctx, DWORD fn_hash) {
     SysConfig* config = (SysConfig*)calloc(1, sizeof(SysConfig));
+
     if (!config)
         return NULL;
 
@@ -56,12 +70,22 @@ SysConfig* get_sys_config(SysCtx* ctx, DWORD fn_hash) {
             if (djb2A(fn_name) == fn_hash) {
                 DWORD_PTR fn_addr = (DWORD_PTR)(image_base + fn_rva);
 
-                if (!memcmp((PVOID)fn_addr, SYSCALL_START, sizeof(SYSCALL_START))) {
-                    BYTE high = *(PBYTE)(fn_addr + 0x5);
-                    BYTE low = *(PBYTE)(fn_addr + 0x4);
+                int traverse = 0;
+                WORD next_ssn = 0;
 
-                    config->ssn = (high << 8) | low;
+                while (TRUE) {
+                    DWORD_PTR next_stub = (DWORD_PTR)(fn_addr + (traverse * (WIN32U_TRAVERSAL_OFFSET)));
+                    next_ssn = find_ssn(next_stub);
+
+                    if (next_ssn != 0) {
+                        break;
+                    }
+
+                    traverse++;
                 }
+
+                WORD ssn = next_ssn - traverse;
+                config->ssn = ssn;
 
                 if (ctx->get_syscall_addr) {
                     config->jump_addr = get_syscall_addr(fn_addr);
@@ -105,7 +129,6 @@ SysConfig* get_sys_config(SysCtx* ctx, DWORD fn_hash) {
 
     return config;
 }
-
 
 void free_ctx(SysCtx* ctx) {
     free(ctx);

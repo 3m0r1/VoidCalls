@@ -5,6 +5,8 @@
 
 #include "hash.h"
 
+#define NTDLL_SIG 0x22d3b5ed
+#define WIN32U_SIG 0x34c755b7
 typedef enum ModuleType {
 	Ntdll,
 	Win32u,

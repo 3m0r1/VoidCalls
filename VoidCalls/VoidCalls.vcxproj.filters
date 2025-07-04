@@ -27,6 +27,12 @@
     <ClCompile Include="lib\hash.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="lib\examples\ntdll\memory.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\examples\win32u\clipboard.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\includes\pe.h">
@@ -36,6 +42,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="lib\includes\hash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\examples\ntdll\memory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\examples\win32u\clipboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

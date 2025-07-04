@@ -4,16 +4,19 @@
 
 #include "pe.h"
 
+#define STUB_SIZE 23
+#define WIN32U_TRAVERSAL_OFFSET 32
+
 #define NT_SUCCESS(status) (((NTSTATUS)(status)) >= 0)
 
-#define CHECK_NTSTATUS(fn, status, message, ...) \
+#define CHECK_NTSTATUS(fn, status, success, ...) \
     if (NT_SUCCESS(status)) { \
-		printf(message, ##__VA_ARGS__); \
+		printf(success, ##__VA_ARGS__); \
 	} else { \
-		printf("[-] %s failed with status code 0x%x\n", #fn, status); \
+		printf("[-] %s failed with status code: 0x%x\n", #fn, status); \
 	} \
-		
-#define STUB_SIZE 23
+
+#define PRINT_CONFIG(config) printf("[CONFIG] Syscall Id: 0x%x, Jump Address: 0x%p\n", config->ssn, config->jump_addr)
 
 #define INIT_CTX_NTDLL() init_ctx(Ntdll, TRUE)
 #define INIT_CTX_WIN32U() init_ctx(Win32u, TRUE)
@@ -47,6 +50,5 @@ void free_ctx(SysCtx* ctx);
 void free_config(SysConfig* config);
 
 void SysSetConfig(SysConfig* config);
-
 NTSTATUS SysInvokeIndirect(void*, ...);
 NTSTATUS SysInvokeDirect(void*, ...);

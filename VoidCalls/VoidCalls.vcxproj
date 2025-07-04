@@ -124,6 +124,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="lib\examples\ntdll\memory.c" />
+    <ClCompile Include="lib\examples\win32u\clipboard.c" />
     <ClCompile Include="lib\hash.c" />
     <ClCompile Include="lib\pe.c" />
     <ClCompile Include="lib\syscalls.c" />
@@ -135,6 +137,8 @@
     </MASM>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="lib\examples\ntdll\memory.h" />
+    <ClInclude Include="lib\examples\win32u\clipboard.h" />
     <ClInclude Include="lib\includes\hash.h" />
     <ClInclude Include="lib\includes\pe.h" />
     <ClInclude Include="lib\includes\syscalls.h" />

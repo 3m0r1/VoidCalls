@@ -1,10 +1,10 @@
-#include<stdio.h>
-#include "./lib/includes/syscalls.h"
+#include "memory.h"
 
-int main(int argc, char* argv[])
-{
+void run_memory_example() {
     SysCtx* ctx = INIT_CTX_NTDLL();
     SysConfig* config = GET_SYS_CONFIG(ctx, ZwAllocateVirtualMemory);
+
+    PRINT_CONFIG(config);
 
     PVOID base_address = NULL;
     SIZE_T size = 32;
@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
         MEM_COMMIT | MEM_RESERVE,
         PAGE_READWRITE
     );
-    
+
     CHECK_NTSTATUS(
         ZwAllocateVirtualMemory,
         status,
@@ -29,6 +29,4 @@ int main(int argc, char* argv[])
 
     free_ctx(ctx);
     free_config(config);
-    
-    return 0;
 }

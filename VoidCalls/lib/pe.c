@@ -24,10 +24,10 @@ Pe parse_image(ModuleType type) {
     PVOID image_base = NULL;
 
     if (type == Ntdll) {
-        image_base = custom_get_module(djb2W(L"ntdll.dll"));
+        image_base = custom_get_module(NTDLL_SIG);
     }
     else if (type == Win32u) {
-        image_base = custom_get_module(djb2W(L"win32u.dll"));
+        image_base = custom_get_module(WIN32U_SIG);
     }
 
     if (!image_base) {
