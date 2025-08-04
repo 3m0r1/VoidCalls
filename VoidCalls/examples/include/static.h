@@ -10,6 +10,9 @@ private:
 
 public:
     StaticInstance();
+    ~StaticInstance();
+
+    void Destroy();
 
     NTSTATUS NtAllocateVirtualMemory(
         HANDLE ProcessHandle,

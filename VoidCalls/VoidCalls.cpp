@@ -25,4 +25,6 @@ int main()
     else {
         printf("[-] Failed to allocate memory, status: 0x%x\n", status);
     }
+
+    instance->Destroy();
 }

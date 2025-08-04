@@ -25,3 +25,12 @@ NTSTATUS StaticInstance::NtAllocateVirtualMemory(
         Protect
     );
 }
+
+StaticInstance::~StaticInstance() {
+    delete this->NtAllocateVirtualMemory_Invoker;
+    delete this->NtdllInvokerFactory;
+}
+
+void StaticInstance::Destroy() {
+    delete this;
+}
