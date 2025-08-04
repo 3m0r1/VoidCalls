@@ -5,17 +5,17 @@ Modern C++ windows system call framework.
 
 ## Background
 
-Due to the lack of c++ windows system call frameworks with neat interfaces and decent evasion, I decided to make VoidCalls.
+Due to the lack of C++ windows system call frameworks with neat interfaces and decent evasion, I decided to make VoidCalls.
 
-Part of it was out of necessity as well, since I required a good framework to use in the my C++ implants.
+Part of it was out of necessity as well, since I required a good framework to use in my C++ implants.
 
 I plan on writing some PoCs based on my own research for [Abyss](https://github.com/AbyssFramework) using this framework.
 
 ## Features
 
 - Clean C++ API
-- Support for NTDLL, WIN32U
-- Support for Direct / Indirect system calls
+- Support for NTDLL and WIN32U
+- Support for Direct and Indirect system calls
 
 ## Example
 
