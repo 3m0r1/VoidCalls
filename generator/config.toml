@@ -1,0 +1,19 @@
+[metadata]
+name = 'Instance'
+sal = true # use source-code annotation language?
+
+[ntdll.NtAllocateVirtualMemory]
+alias = 'NtAllocateVirtualMemory' # optional (Default -> EntryName)
+type = 1 # indirect invoker (default -> Direct)
+
+[ntdll.NtWriteVirtualMemory]
+alias = 'NtWriteVirtualMemory'
+type = 1
+
+[ntdll.NtProtectVirtualMemory]
+alias = 'NtProtectVirtualMemory'
+type = 1
+
+[ntdll.NtCreateThreadEx]
+alias = 'NtCreateThreadEx'
+type = 1
